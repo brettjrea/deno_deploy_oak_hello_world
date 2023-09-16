@@ -11,7 +11,8 @@ const router = new Router();
 // Use the router to handle requests to your site
 router.get('/', async (context) => {
   await send(context, context.request.url.pathname, {
-    root: `${Deno.cwd()}/static`,                                                                                index: "index.html",
+    root: `${Deno.cwd()}/static`,        
+    index: "index.html",
   });
 });
 
