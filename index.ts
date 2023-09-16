@@ -12,7 +12,7 @@ const router = new Router();
 router.get('/', async (context) => {
   await send(context, context.request.url.pathname, {
     root: `${Deno.cwd()}/static`,        
-    index: "index.ts",
+    index: "index.html",
   });
 });
 
