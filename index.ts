@@ -11,11 +11,11 @@ const router = new Router();
 // Use the router to handle requests to your site
 router.get('/', async (context) => {
   await send(context, context.request.url.pathname, {
-    root: `${Deno.cwd()}/static`,                                                      index: "index.html",
+    root: `${Deno.cwd()}/static`,                                                                                index: "index.html",
   });
 });
 
-// Use the app to register the router as middleware and listen for requests on a p$
+// Use the app to register the router as middleware and listen for requests on a port
 app.use(router.routes());
 app.use(router.allowedMethods());
 
