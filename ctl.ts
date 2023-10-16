@@ -1,6 +1,7 @@
-import { flags } from "./deps.ts";
+import { flags, open } from "./deps.ts";
 
-const BINARY_NAME = "briectl"
+// NOTE -- temporary name
+const BINARY_NAME = "tempctl";
 
 function parseArgs(args: Array<string>) {
     const parsed = flags(args, {
@@ -22,9 +23,24 @@ SUBCOMMANDS:
     open        Open application in web browser
 `;
 
-// deno-lint-ignore require-await no-explicit-any
-async function openSubcommand(_rawArgs: Record<string, any>): Promise<void> {
-    console.log("open subcommand")
+type OpenArgs = {
+    help: boolean;
+};
+
+// deno-lint-ignore no-explicit-any
+async function openSubcommand(rawArgs: Record<string, any>): Promise<void> {
+    const args: OpenArgs = {
+        help: !!rawArgs.help,
+    };
+
+    if (args.help) {
+        console.log(help);
+        Deno.exit(0);
+    }
+
+    // TODO -- pass argument
+    // FIX -- error on wsl2
+    await open("http://localhost:8000", { wait: false });
 }
 
 if (import.meta.main) {
