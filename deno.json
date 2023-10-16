@@ -1,0 +1,12 @@
+{
+    "tasks": {
+        "dev": "deno run --allow-read --allow-net index.ts",
+        "ctl": "deno run --allow-read --allow-run ctl.ts",
+        "cache": "deno cache deps.ts"
+    },
+    "imports": {
+        "$oak/": "https://deno.land/x/oak@v12.6.1/",
+        "$open/": "https://deno.land/x/open@v0.0.6/",
+        "$std/": "https://deno.land/std@0.204.0/"
+    }
+}
