@@ -1,7 +1,7 @@
 {
     "tasks": {
-        "dev": "deno run --watch main.ts",
-        "ctl": "deno run -A ctl.ts",
+        "dev": "deno run --allow-read --allow-net index.ts",
+        "ctl": "deno run --allow-read --allow-run ctl.ts",
         "cache": "deno cache deps.ts"
     },
     "imports": {
