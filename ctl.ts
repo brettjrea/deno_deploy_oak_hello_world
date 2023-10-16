@@ -1,5 +1,7 @@
 import { flags } from "./deps.ts";
 
+const BINARY_NAME = "briectl"
+
 function parseArgs(args: Array<string>) {
     const parsed = flags(args, {
         alias: {
@@ -13,12 +15,17 @@ function parseArgs(args: Array<string>) {
     return parsed;
 }
 
-const help = `briectl
-Command line tool for Deno Deploy.
+const help = `${BINARY_NAME}
+Command line tool.
 
 SUBCOMMANDS:
     open        Open application in web browser
 `;
+
+// deno-lint-ignore require-await no-explicit-any
+async function openSubcommand(_rawArgs: Record<string, any>): Promise<void> {
+    console.log("open subcommand")
+}
 
 if (import.meta.main) {
     const args = parseArgs(Deno.args);
@@ -26,7 +33,7 @@ if (import.meta.main) {
     const subcommand = args._.shift();
     switch (subcommand) {
         case "open":
-            console.log("open")
+            await openSubcommand(args);
             break;
         default:
             if (args.help) {
